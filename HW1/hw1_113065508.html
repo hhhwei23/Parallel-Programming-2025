@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>hw1_113065508.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="parellel-programming-hw1">Parellel Programming HW1</h1>
+<font size = 4>
+<center>
+113065508		黃為翰
+</center>
+</font>
+<h2 id="implementation">Implementation</h2>
+<h3 id="overview">Overview</h3>
+<p>這次作業，我的整體流程為</p>
+<ol>
+<li>先把input path &amp; output path 同步到所有的rank</li>
+<li>以近乎平均的數量把Ｎ個元素分配給Ｐ個rank</li>
+<li>平行I/O -&gt; 每個rank直接從共享檔案中讀取自己負責的區段</li>
+<li>Local sort : 對本地的各rank做std::sort</li>
+<li>Odd-Even Sort : 跟鄰居做Compare, 相鄰區段反覆交換與合併，直到沒有交換的事件發生為止</li>
+<li>平行I/O -&gt; 每個rank將排序後的區段寫回檔案中</li>
+</ol>
+<ul>
+<li>Input / Output format
+<ul>
+<li>Input: binary檔，內容為32-bit浮點數</li>
+<li>Output: 同格式的binary檔</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-parameter-distribution">1. Parameter Distribution</h3>
+<h4 id="11-broad-cast-input-output-path">1.1 Broad cast input, output path :</h4>
+<ul>
+<li>只有rank 0 會解析命令參數 <code>N, input path, output path</code>
+<ul>
+<li><code>MPI_Bcast</code> 會廣播Ｎ到其他所有rank</li>
+<li>設計一個function <code>bcast_str</code> -&gt; 先廣播長度，在廣播內容(input path, output path)到所有rank</li>
+</ul>
+<ol>
+<li>先用<code>MPI_Comm_rank(comm, &amp;rank)</code> 來取得rank，用於後面判斷自己是不是root</li>
+<li>root把len設為s.size()其餘為預設0 -&gt; 廣播len</li>
+<li>每個rank都準備好接收資料的空間 <code>buf (len)</code></li>
+<li>root把原始字串的內容複製到len裡面 -&gt; 廣播input/output path</li>
+<li>不是root的其他rank用 <code>s.assign(buf.data(), buf.data() + len);</code> 來重建出自己的string s</li>
+</ol>
+</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">bcast_str</span><span class="hljs-params">(<span class="hljs-built_in">string</span>&amp; s, <span class="hljs-keyword">int</span> root, MPI_Comm comm)</span> </span>{
+	<span class="hljs-keyword">int</span> rank;
+	MPI_Comm_rank(comm, &amp;rank);
+	<span class="hljs-keyword">int</span> len = (rank == root) ? s.size() : <span class="hljs-number">0</span>;
+	MPI_Bcast(&amp;len, <span class="hljs-number">1</span>, MPI_INT, root, comm);
+	<span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">char</span>&gt; <span class="hljs-title">buf</span><span class="hljs-params">(len)</span></span>;
+
+	<span class="hljs-keyword">if</span> (rank == root &amp;&amp; len) {
+		<span class="hljs-built_in">memcpy</span>(buf.data(), s.data(), len);
+	}
+	<span class="hljs-keyword">if</span> (len) MPI_Bcast(buf.data(), len, MPI_CHAR, root, comm);
+	<span class="hljs-keyword">if</span> (rank != root) {
+		s.assign(buf.data(), buf.data() + len);
+	}
+}
+</div></code></pre>
+<h4 id="12-data-partitioning">1.2 Data partitioning</h4>
+<ul>
+<li>將Ｎ個data平分為Ｐ份
+<ul>
+<li>藉由計算餘數 <code>rem</code> 就可以使Ｎ就算不整除也可以正確平分元素給所有的rank</li>
+</ul>
+</li>
+<li><code>vector&lt;int&gt; count</code> : Number of elements each rank need to read</li>
+<li><code>vector&lt;int&gt; displacement</code> : 快速計算每個rank要從原始input的哪個index開始讀資料</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">separate_interval</span><span class="hljs-params">(ull N, <span class="hljs-keyword">int</span> P, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; counts, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; displs)</span> </span>{
+	counts.resize(P);
+	displs.resize(P);
+	ull base = N / P;
+	ull rem = N % P;
+	<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> offset = <span class="hljs-number">0</span>;
+
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> r = <span class="hljs-number">0</span>; r &lt; P; r++) {
+        <span class="hljs-comment">// c : # of elements `r`th rank need to read</span>
+		ull c = base + (r &lt; rem ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>);
+		counts[r] = c;
+        <span class="hljs-comment">// displacement from original array (where to start reading data)</span>
+		displs[r] = offset;
+		offset += (<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span>)c;
+	}
+}
+</div></code></pre>
+<h3 id="2-parellel-io-mpi-io">2. Parellel I/O (MPI-IO)</h3>
+<p><strong>這段開始是被寫在 <code>int main()</code> 裡面</strong></p>
+<ul>
+<li>每一個rank直接對共享檔案操作自己的連續區段，不用集中到root</li>
+</ul>
+<h4 id="21-function-call-of-previos-section">2.1 Function call of previos section</h4>
+<ul>
+<li>在知道設定的rank數量以及 <code>N, input/output path</code> 之後
+<ol>
+<li>把 N 先告訴所有人</li>
+<li>call <code>bcast_str</code>把input/outpu path讓所有rank知道</li>
+<li>call <code>separate_interval</code> 計算每一個rank所需要讀的數量以及要從哪一個index開始讀</li>
+</ol>
+</li>
+</ul>
+<pre class="hljs"><code><div>	MPI_Init(&amp;argc, &amp;argv);
+
+	<span class="hljs-keyword">int</span> rank, size;
+	MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+	MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+	
+	ull N = <span class="hljs-number">0</span>;
+	<span class="hljs-built_in">string</span> input_path, output_path;
+	<span class="hljs-keyword">if</span> (rank == <span class="hljs-number">0</span>) {
+		N = strtoull(argv[<span class="hljs-number">1</span>], <span class="hljs-literal">nullptr</span>, <span class="hljs-number">10</span>);
+		input_path = argv[<span class="hljs-number">2</span>];
+		output_path = argv[<span class="hljs-number">3</span>];
+	}
+
+	MPI_Bcast(&amp;N, <span class="hljs-number">1</span>, MPI_UNSIGNED_LONG_LONG, <span class="hljs-number">0</span>, MPI_COMM_WORLD);
+	bcast_str(input_path, <span class="hljs-number">0</span>, MPI_COMM_WORLD);
+	bcast_str(output_path, <span class="hljs-number">0</span>, MPI_COMM_WORLD);
+
+	<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; counts, displs;
+	separate_interval(N, size, counts, displs);
+</div></code></pre>
+<h4 id="22-main-io-process">2.2 Main I/O Process</h4>
+<ul>
+<li>使用 <code>MPI_File_open</code> 來打開檔案</li>
+<li>Use <code>MPI_File_read_at_all</code> 來讀取檔案內容
+<ul>
+<li>MPI_File_read_at all裡面的參數為</li>
+</ul>
+<pre class="hljs"><code><div>MPI_File_read_at_all(
+<span class="hljs-comment">/*fh*/</span>        fin,								--&gt; MPI_File打開的檔案
+<span class="hljs-comment">/*offset*/</span>    byte_offset,                    	--&gt; 檔案位移
+<span class="hljs-comment">/*buf*/</span>       local_n ? local.data() : <span class="hljs-literal">NULL</span>,  	--&gt; 要讀到哪裡
+<span class="hljs-comment">/*count*/</span>     local_n,                       	--&gt; 要讀幾個元素
+<span class="hljs-comment">/*datatype*/</span>  MPI_FLOAT,                      	--&gt; 每個元素的type
+<span class="hljs-comment">/*status*/</span>    &amp;st
+);
+</div></code></pre>
+<ul>
+<li>比起MPI_File_read更適合做這種&quot;每個rank讀取自己要的段落&quot;的操作
+<ul>
+<li>MPI_File_read : 會從file pointer開始讀檔，但可以用MPI_File_seek來改變pointer的位置</li>
+<li>MPI_File_read_at_all : 多一個at可以讓我直接從offset的地方讀</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre class="hljs"><code><div>	<span class="hljs-keyword">int</span> local_n = counts[rank];
+	<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> local_off_elems = displs[rank];
+	MPI_File fin, fout;
+
+	<span class="hljs-function"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">float</span>&gt; <span class="hljs-title">local</span><span class="hljs-params">(local_n)</span></span>;
+
+	<span class="hljs-comment">// ===== File in ======</span>
+
+	MPI_File_open(MPI_COMM_WORLD, input_path.c_str(), MPI_MODE_RDONLY, MPI_INFO_NULL, &amp;fin);
+
+	MPI_Status st;
+	MPI_Offset byte_offset = (MPI_Offset)local_off_elems * <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">float</span>);
+	MPI_File_read_at_all(fin, byte_offset, local_n ? local.data() : <span class="hljs-literal">nullptr</span>, local_n, MPI_FLOAT, &amp;st);
+	MPI_File_close(&amp;fin);
+</div></code></pre>
+<h3 id="3-sorting">3. Sorting</h3>
+<h4 id="31-local-sort">3.1 Local sort</h4>
+<ul>
+<li>Use <code>sort()</code> in C++ std library
+<ul>
+<li>採用的是introsort (quicksort + heapsort + insertion sort)</li>
+<li>使用的空間是O(1), 且時間複雜度平均以及最壞都為O(n log n)</li>
+</ul>
+</li>
+</ul>
+<h4 id="32-odd-even-sort">3.2 Odd-Even sort</h4>
+<ul>
+<li>在local排序好之後進入while迴圈 <code>while(true)</code></li>
+</ul>
+<ol>
+<li>
+<p>進入while 迴圈之後每一輪都跑兩個階段</p>
+<ul>
+<li>state = 0 --&gt; odd phase, state = 1 --&gt; even phase</li>
+<li>如果neighbor超出範圍 --&gt; 直接continue</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> state = <span class="hljs-number">0</span>; state &lt; <span class="hljs-number">2</span>; state++) {
+	<span class="hljs-keyword">int</span> neighbor = ((rank % <span class="hljs-number">2</span>) == state) ? (rank + <span class="hljs-number">1</span>) : (rank - <span class="hljs-number">1</span>);
+	<span class="hljs-keyword">if</span> (neighbor &lt; <span class="hljs-number">0</span> || neighbor &gt;= size) {
+		<span class="hljs-keyword">continue</span>;
+	}
+	...
+}
+</div></code></pre>
+</li>
+<li>
+<p>接下來就是做&quot;鄰居互換&quot;這個動作</p>
+<ul>
+<li><code>recvbuf</code> 用來存放鄰居傳過來的資料</li>
+<li>使用MPI_Sendrecv()來交換資料
+<ul>
+<li>MPI_Sendrecv的參數如下</li>
+</ul>
+<pre class="hljs"><code><div>MPI_Sendrecv(
+<span class="hljs-comment">/*sendbuf*/</span>   local_n ? local.data() : <span class="hljs-literal">nullptr</span>,		--&gt;要送出的資料
+<span class="hljs-comment">/*sendcount*/</span> local_n,                          	--&gt;要送出的資料有多大
+<span class="hljs-comment">/*sendtype*/</span>  MPI_FLOAT,                        	--&gt;資料type
+<span class="hljs-comment">/*dest*/</span>      neighbor,                         	--&gt;送給哪個rank
+<span class="hljs-comment">/*sendtag*/</span>   <span class="hljs-number">0</span>,                                
+
+<span class="hljs-comment">/*recvbuf*/</span>   neighbor_n ? recvbuf.data() : <span class="hljs-literal">nullptr</span>, --&gt;把資料放進recvbuf
+<span class="hljs-comment">/*recvcount*/</span> neighbor_n,                            --&gt;鄰居資料有多大
+<span class="hljs-comment">/*recvtype*/</span>  MPI_FLOAT,                             --&gt;資料type
+<span class="hljs-comment">/*source*/</span>    neighbor,                              --&gt;從哪裡送來
+<span class="hljs-comment">/*recvtag*/</span>   <span class="hljs-number">0</span>,                                      
+
+<span class="hljs-comment">/*comm*/</span>      MPI_COMM_WORLD,
+<span class="hljs-comment">/*status*/</span>    MPI_STATUS_IGNORE                 
+);
+
+</div></code></pre>
+<ul>
+<li>MPI_Sendrecv是一個blocking式的點對點通訊 -&gt;要兩邊都同時傳出之後才會return</li>
+</ul>
+</li>
+<li>實際傳輸的code如下</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">float</span>&gt; recvbuf;
+
+<span class="hljs-keyword">int</span> neighbor_n = counts[neighbor];
+recvbuf.resize(neighbor_n);
+MPI_Sendrecv(local_n ? local.data() : <span class="hljs-literal">nullptr</span>, local_n, MPI_FLOAT, neighbor, <span class="hljs-number">0</span>,
+				neighbor_n ? recvbuf.data() : <span class="hljs-literal">nullptr</span>, neighbor_n, MPI_FLOAT, neighbor, <span class="hljs-number">0</span>,
+				MPI_COMM_WORLD, MPI_STATUS_IGNORE);	
+</div></code></pre>
+</li>
+<li>
+<p>當每個rank都有自己跟neighbor的資料之後，就可以排序之後看看自己是該保留比較大的那一半還是比較小的那一半</p>
+<ul>
+<li>會用到兩個helper function --&gt; <code>low_half(), high_half()</code>
+<ul>
+<li><code>low_half</code> : 合併Ａ, B，取出最小的A.size個元素並存到 <code>vector&lt;int&gt; out</code>裡面</li>
+<li><code>high_half</code> : 合併Ａ, B，取出最大的B.size個元素並存到 <code>vector&lt;int&gt; out</code>裡面
+<ul>
+<li>上面兩者個做法是使用兩指標的merge (因為Ａ, B各自都已經排序好了)</li>
+<li>每次比較A[i]以及B[j]，把比較小/大的放進out[k]，並把pointer + 1</li>
+</ul>
+</li>
+<li>回傳 <code>A != out</code> 表示這次compare-split是否有改變local的資料</li>
+</ul>
+</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">low_half</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">float</span>&gt;&amp; A, <span class="hljs-keyword">const</span> <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">float</span>&gt;&amp; B, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">float</span>&gt;&amp; out)</span> </span>{
+<span class="hljs-keyword">int</span> needed = A.size();
+out.resize(needed);
+<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>, j = <span class="hljs-number">0</span>, k = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">while</span> (k &lt; needed) {
+	<span class="hljs-keyword">float</span> v;
+	<span class="hljs-keyword">if</span> (j &gt;= B.size() || (i &lt; A.size() &amp;&amp; A[i] &lt;= B[j])) v = A[i++];
+	<span class="hljs-keyword">else</span> v = B[j++];
+	out[k++] = v;
+}
+
+<span class="hljs-keyword">return</span> A != out;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">high_half</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">float</span>&gt;&amp; A, <span class="hljs-keyword">const</span> <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">float</span>&gt;&amp; B, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">float</span>&gt;&amp; out)</span> </span>{
+	<span class="hljs-keyword">int</span> needed = A.size();
+	out.resize(needed);
+	<span class="hljs-keyword">int</span> i = A.size() - <span class="hljs-number">1</span>;
+	<span class="hljs-keyword">int</span> j = B.size() - <span class="hljs-number">1</span>;
+	<span class="hljs-keyword">int</span> k = needed - <span class="hljs-number">1</span>;
+
+	<span class="hljs-keyword">while</span> (k &gt;= <span class="hljs-number">0</span>) {
+		<span class="hljs-keyword">float</span> v;
+		<span class="hljs-keyword">if</span> (j &lt; <span class="hljs-number">0</span> || (i &gt;= <span class="hljs-number">0</span> &amp;&amp; A[i] &gt;= B[j])) v = A[i--];
+		<span class="hljs-keyword">else</span> v = B[j--];
+		out[k--] = v;
+	}
+
+	<span class="hljs-keyword">return</span> A != out;
+}
+</div></code></pre>
+</li>
+<li>
+<p>使用上面所寫的兩個helper function來把排序好的資料分給兩個rank，並記錄此次iteration是否有發生交換</p>
+<ul>
+<li>如果有change的話就把global change 設為true，表示還需要進行下一個iteration</li>
+</ul>
+</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-keyword">bool</span> changed = <span class="hljs-literal">false</span>;
+<span class="hljs-keyword">if</span> (rank &lt; neighbor) {
+	changed = low_half(local, recvbuf, nextbuf);
+}
+<span class="hljs-keyword">else</span> {
+	changed = high_half(local, recvbuf, nextbuf);
+}
+<span class="hljs-keyword">if</span> (changed) {
+	local.swap(nextbuf);
+	global_change = <span class="hljs-literal">true</span>;
+}
+</div></code></pre>
+<ol start="5">
+<li>兩個phase都做完之後，要看看這一輪是否有人有變動
+<ul>
+<li>做一次全域的OR就可以知道這一輪是否有rank有所變動</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-keyword">int</span> flag = global_change ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>;
+<span class="hljs-keyword">int</span> allflag = <span class="hljs-number">0</span>;		
+MPI_Allreduce(&amp;flag, &amp;allflag, <span class="hljs-number">1</span>, MPI_INT, MPI_LOR, MPI_COMM_WORLD);
+<span class="hljs-keyword">if</span> (!allflag) <span class="hljs-keyword">break</span>;
+</div></code></pre>
+<ul>
+<li>MPI_Allreduce裡面的參數如下</li>
+</ul>
+<pre class="hljs"><code><div>MPI_Allreduce(
+<span class="hljs-comment">/*sendbuf*/</span> &amp;flag,			--&gt;本地的<span class="hljs-number">0</span>/<span class="hljs-number">1</span> (本輪是否有改變)
+<span class="hljs-comment">/*recvbuf*/</span> &amp;allflag,		--&gt;全域OR之後的結果
+<span class="hljs-comment">/*count*/</span>   <span class="hljs-number">1</span>,				--&gt;元素個數
+<span class="hljs-comment">/*datatype*/</span>MPI_INT,
+<span class="hljs-comment">/*op*/</span>      MPI_LOR,
+<span class="hljs-comment">/*comm*/</span>    MPI_COMM_WORLD
+);
+
+</div></code></pre>
+<ul>
+<li>如果都沒有任何人有改變的話 --&gt; break while loop</li>
+</ul>
+</li>
+</ol>
+<h3 id="4-file-output">4. File output</h3>
+<pre class="hljs"><code><div>	<span class="hljs-comment">// ======== File out =======</span>
+	MPI_File_open(MPI_COMM_WORLD, output_path.c_str(), MPI_MODE_CREATE | MPI_MODE_WRONLY, MPI_INFO_NULL, &amp;fout);
+
+	MPI_File_write_at_all(fout, byte_offset, local_n ? local.data() : <span class="hljs-literal">nullptr</span>, local_n, MPI_FLOAT, &amp;st);
+
+	MPI_File_close(&amp;fout);
+</div></code></pre>
+<ul>
+<li>這裡用到的MPI_File_write_at_all裡面的參數如下</li>
+</ul>
+<pre class="hljs"><code><div>MPI_File_write_at_all(
+  <span class="hljs-comment">/*fh*/</span>       fout,                               
+  <span class="hljs-comment">/*offset*/</span>   byte_offset,                       
+  <span class="hljs-comment">/*buf*/</span>      local_n ? local.data() : <span class="hljs-literal">nullptr</span>, 
+  <span class="hljs-comment">/*count*/</span>    local_n,        
+  <span class="hljs-comment">/*datatype*/</span> MPI_FLOAT,                        
+  <span class="hljs-comment">/*status*/</span>   &amp;st
+);
+
+</div></code></pre>
+<h3 id="5-optimization">5. Optimization</h3>
+<h4 id="1-perform-early-stop">1. Perform early stop</h4>
+<ul>
+<li>I performed early stop to reduce the time of merging 2 arrays
+<ul>
+<li>捕捉 array A, B 的 edges <code>edges[2]</code> and <code>nb_edge[2]</code></li>
+<li>Compare the edge of both array
+<ul>
+<li>if rank &lt; neighbor --&gt; if edges[1] &gt; nb_edges[0] --&gt; need change</li>
+<li>if rank &gt; neighbor --&gt; if edges[0] &lt; nb_edges[1] --&gt; need change</li>
+<li>Otherwise --&gt; continue</li>
+</ul>
+</li>
+<li>做這個可以避免明明這兩個rank本來已經有做好排序卻還需要再進行一次merge並得到相同的結果
+<ul>
+<li>early stop雖然也需要communication,但是只需要傳遞兩個數字就好</li>
+</ul>
+</li>
+<li>有了early stop的機制之後大約會讓時間從150 -&gt; 140</li>
+</ul>
+</li>
+</ul>
+<pre class="hljs"><code><div>				<span class="hljs-comment">// Early stop check</span>
+				<span class="hljs-keyword">float</span> edges[<span class="hljs-number">2</span>];
+				<span class="hljs-keyword">if</span> (local_n &gt; <span class="hljs-number">0</span>) {
+					edges[<span class="hljs-number">0</span>] = local.front();
+					edges[<span class="hljs-number">1</span>] = local.back();
+				} <span class="hljs-keyword">else</span> {
+					edges[<span class="hljs-number">0</span>] =  <span class="hljs-built_in">std</span>::numeric_limits&lt;<span class="hljs-keyword">float</span>&gt;::infinity();
+					edges[<span class="hljs-number">1</span>] = -<span class="hljs-built_in">std</span>::numeric_limits&lt;<span class="hljs-keyword">float</span>&gt;::infinity();
+				}
+				<span class="hljs-keyword">float</span> nb_edges[<span class="hljs-number">2</span>];
+
+				<span class="hljs-keyword">double</span> tc = tic();
+				MPI_Sendrecv(edges, <span class="hljs-number">2</span>, MPI_FLOAT, neighbor, <span class="hljs-number">100</span>,
+							nb_edges, <span class="hljs-number">2</span>, MPI_FLOAT, neighbor, <span class="hljs-number">100</span>,
+							MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+				t_comm += (tic() - tc);
+
+				<span class="hljs-keyword">bool</span> need_exchange = <span class="hljs-literal">false</span>;
+				<span class="hljs-keyword">if</span> (local_n &gt; <span class="hljs-number">0</span> &amp;&amp; neighbor_n &gt; <span class="hljs-number">0</span>) {
+					<span class="hljs-keyword">if</span> (rank &lt; neighbor) {
+						need_exchange = !(edges[<span class="hljs-number">1</span>] &lt;= nb_edges[<span class="hljs-number">0</span>]);
+					} <span class="hljs-keyword">else</span> {
+						need_exchange = !(edges[<span class="hljs-number">0</span>] &gt;= nb_edges[<span class="hljs-number">1</span>]);
+					}
+				}
+
+				<span class="hljs-keyword">if</span> (!need_exchange) <span class="hljs-keyword">continue</span>;
+</div></code></pre>
+<h4 id="2-improce-local-sort">2. Improce local sort</h4>
+<ul>
+<li>一開始是使用Ｃ＋＋的std::sort()來做local sort，但是後來發現有一個library <code>#include &lt;boost/sort/spreadsort/spreadsort.hpp&gt;</code> 裡面有一些更厲害的做法，我就把它套用在我的程式裡面
+<ul>
+<li>因為我發現他是針對比較大的資料集，所以我也對其做了簡單的分割</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-keyword">if</span>(local_n &gt;= <span class="hljs-number">100000</span>) bs::float_sort(local.begin(), local.end());
+<span class="hljs-keyword">else</span> sort(local.begin(), local.end());
+</div></code></pre>
+<ul>
+<li>Move from sort -&gt; spread sort --&gt; 139.6 -&gt; 114.91</li>
+</ul>
+</li>
+</ul>
+<h2 id="experiments-and-analysis">Experiments and Analysis</h2>
+<h3 id="system">System</h3>
+<ul>
+<li>我是使用server預設的機器來執行 (圖片為Lab1時助教的介紹投影片)
+<img src="image.png" alt="alt text"></li>
+<li>計算performance : 我使用 <code>MPI_Wtime()</code>來計算時間，在I/O的前後，Sendrecv的前後，以及在計算sort / merge等地方的前後計算時間
+<ul>
+<li>i/o time</li>
+<li>communication time</li>
+<li>computation time</li>
+<li>以下列出幾個範例</li>
+</ul>
+<pre class="hljs"><code><div>ts = tic();
+
+MPI_File_open(MPI_COMM_WORLD, input_path.c_str(), MPI_MODE_RDONLY, MPI_INFO_NULL, &amp;fin);
+...
+...
+
+t_io += (tic() - ts);
+<span class="hljs-comment">// ======================================</span>
+ts = tic();
+<span class="hljs-comment">//sort(local.begin(), local.end());</span>
+<span class="hljs-keyword">if</span>(local_n &gt;= <span class="hljs-number">100000</span>) bs::float_sort(local.begin(), local.end());
+<span class="hljs-keyword">else</span> sort(local.begin(), local.end());
+t_comp += (tic() - ts);
+
+<span class="hljs-comment">// ======================================</span>
+
+<span class="hljs-keyword">double</span> tc = tic();
+MPI_Sendrecv(edges, <span class="hljs-number">2</span>, MPI_FLOAT, neighbor, <span class="hljs-number">100</span>,
+			nb_edges, <span class="hljs-number">2</span>, MPI_FLOAT, neighbor, <span class="hljs-number">100</span>,
+			MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+t_comm += (tic() - tc);
+</div></code></pre>
+</li>
+</ul>
+<h3 id="plots">Plots</h3>
+<ul>
+<li>我使用的資料是testcase 30.txt, 詳細資訊如下
+<ul>
+<li>選這個testcase是因為他有足夠大的資料量可以拿來作比較，在跑只有一個processor的時候也剛好不會太久</li>
+</ul>
+</li>
+</ul>
+<pre class="hljs"><code><div>    &quot;n&quot;: 64123483,
+    &quot;nodes&quot;: 2,
+    &quot;procs&quot;: 24,
+    &quot;time&quot;: 180
+</div></code></pre>
+<blockquote>
+<p>我總共做了兩相比較</p>
+<ol>
+<li>固定使用一個node，逐步提升processor的數量 (1-12)</li>
+<li>固定都使用12個processor，比較不同node的數量 (1-4)</li>
+</ol>
+</blockquote>
+<hr>
+<ul>
+<li>我所做的統計方式是先使用MPI_Wtime()把computation time, communication time, i/o tome都每個rank各自統計好之後取平均
+而total_wall則是取所花時間最久的那個rank</li>
+<li>Data :</li>
+</ul>
+<pre class="hljs"><code><div>P	nodes	io_avg	comm_avg	comp_avg	total_wall
+<span class="hljs-number">1</span>	<span class="hljs-number">1</span>	<span class="hljs-number">0.475042</span>	<span class="hljs-number">0.000037</span>	<span class="hljs-number">17.262683</span>	<span class="hljs-number">17.970155</span>
+<span class="hljs-number">2</span>	<span class="hljs-number">1</span>	<span class="hljs-number">0.372293</span>	<span class="hljs-number">0.208584</span>	<span class="hljs-number">11.824709</span>	<span class="hljs-number">12.611812</span>
+<span class="hljs-number">3</span>	<span class="hljs-number">1</span>	<span class="hljs-number">0.538909</span>	<span class="hljs-number">0.681425</span>	<span class="hljs-number">8.353600</span>	<span class="hljs-number">9.723063</span>
+<span class="hljs-number">4</span>	<span class="hljs-number">1</span>	<span class="hljs-number">0.538999</span>	<span class="hljs-number">0.450070</span>	<span class="hljs-number">6.469083</span>	<span class="hljs-number">7.572309</span>
+<span class="hljs-number">5</span>	<span class="hljs-number">1</span>	<span class="hljs-number">0.618254</span>	<span class="hljs-number">0.701607</span>	<span class="hljs-number">5.500111</span>	<span class="hljs-number">6.911565</span>
+<span class="hljs-number">6</span>	<span class="hljs-number">1</span>	<span class="hljs-number">0.509582</span>	<span class="hljs-number">0.595049</span>	<span class="hljs-number">4.721785</span>	<span class="hljs-number">5.911501</span>
+<span class="hljs-number">7</span>	<span class="hljs-number">1</span>	<span class="hljs-number">0.538997</span>	<span class="hljs-number">0.681598</span>	<span class="hljs-number">4.276460</span>	<span class="hljs-number">5.569597</span>
+<span class="hljs-number">8</span>	<span class="hljs-number">1</span>	<span class="hljs-number">0.538416</span>	<span class="hljs-number">0.691028</span>	<span class="hljs-number">3.829767</span>	<span class="hljs-number">5.126488</span>
+<span class="hljs-number">9</span>	<span class="hljs-number">1</span>	<span class="hljs-number">0.549118</span>	<span class="hljs-number">0.751068</span>	<span class="hljs-number">3.620997</span>	<span class="hljs-number">4.982676</span>
+<span class="hljs-number">10</span>	<span class="hljs-number">1</span>	<span class="hljs-number">0.559014</span>	<span class="hljs-number">0.730399</span>	<span class="hljs-number">3.362643</span>	<span class="hljs-number">4.710898</span>
+<span class="hljs-number">11</span>	<span class="hljs-number">1</span>	<span class="hljs-number">0.629006</span>	<span class="hljs-number">0.956769</span>	<span class="hljs-number">3.185742</span>	<span class="hljs-number">4.825485</span>
+<span class="hljs-number">12</span>	<span class="hljs-number">1</span>	<span class="hljs-number">0.798058</span>	<span class="hljs-number">0.802129</span>	<span class="hljs-number">2.930846</span>	<span class="hljs-number">4.589616</span>
+</div></code></pre>
+<ul>
+<li>以下表格是我單獨拿出三個指標，以及以一個processor的total_wall為基準比較1-12個processor的效能提升
+<ul>
+<li>(enhancement 可以對應到speed up)</li>
+<li>(computation time 可以對應到CPU time)</li>
+</ul>
+</li>
+</ul>
+<table>
+  <tr>
+    <td><img src="image-1.png" width="100%"></td>
+    <td><img src="image-2.png" width="93%"></td>
+  </tr>
+  <tr>
+    <td align="center">io_avg</td>
+    <td align="center">comm_avg</td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <td><img src="image-5.png" width="100%"></td>
+    <td><img src="image-6.png" width="93%"></td>
+  </tr>
+  <tr>
+    <td align="center">comp_avg</td>
+    <td align="center">Enhencement</td>
+  </tr>
+</table>
+<ul>
+<li>以下表格是一個total running time的比較以及可以直觀地看到每個time category的比例</li>
+</ul>
+<p><img src="image-7.png" alt="alt text"></p>
+<ul>
+<li>以下是比較同樣node數量的狀況下，不同node數量的時間比例比較圖</li>
+</ul>
+<p><img src="image-8.png" alt="alt text"></p>
+<h3 id="discussion">Discussion</h3>
+<hr>
+<p>首先看到 <code>comp_avg</code>的地方，隨著processor的數量增加，計算時間有很明顯的下降趨勢，尤其是在1-4的階段效益最明顯，之後的效益會遞減． 可以發現增加processor的數量確實可以有效提升計算效率，但是因為效益會遞減，可見不是毫無策略得增加processor就一定可以得到明顯的效能提升，而是可以根據這樣的結果來判斷最划算的選擇．</p>
+<p>跟整體趨勢比較不同的是，在processor為11, 12的時候，其實整體的運作時間是有往上升的，可能是因為MPI溝通時間的增加量已經大於多CPU所節省的時間了，導致反而會讓總時間增加，因此這時比較重要的部分就不是CPU time而是Communication time了</p>
+<hr>
+<p>接下來是 <code>comm_avg</code>的地方，可以看到綜合的趨勢是往上升的，也代表越多的processor會花越多時間做communication，這點很合理，也符合預期．
+因為多個processor也意味著會有比較多次的iteration，資料交換的次數也會變多．</p>
+<p>而 <code>io_avg</code>可以發現整體大致持平但是在最processor比較多的時候會往上升．</p>
+<p>在 <code>enhancement</code>的地方也可以看到，最多processor的跟只有一個的比起來會有接近4倍的提升，但是在越後面的時候提升的趨勢也會趨緩，也可以依此作為根據決定這個資料量的計算要使用多少processor</p>
+<hr>
+<p>而在固定12個processor改變不同node數量的比較中，可以發現總時間幾乎沒有下降，所以可以發現在相同processor的狀況下增加node的數量並不會對這個project的應用有效率上的提升．</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>做完這次作業，我感覺對MPI如何平行處理程式的運作有了更多的了解，實作上課中所學到的知識會讓我對MPI的運作更加熟悉．藉由時間上的分析也可以看到在資料量非常大的狀況下，對資料做平行處理可以節省多少時間，改變sorting的方式又有多少效能提升，可見其重要性．</p>
+<p>在寫程式的時候也會遇到一些問題，像是為了要修改一個地方導致其他地方出錯，而改著改著程式就會在奇怪的地方有error讓我必須要回溯到之前的版本慢慢找哪個地方出錯．</p>
+<p>我覺得這次作業起到的是一個開頭的作用，讓我們在熟悉平行計算的方式之後在接上更深入的方法及應用，這個作業相信會起到很好的啟發效果．</p>
+
+</body>
+</html>
