@@ -152,8 +152,8 @@ int main(int argc, char** argv){
 				// Early stop check
 				float edges[2];
 				if (local_n > 0) {
-					edges[0] = local.front();   // my min
-					edges[1] = local.back();    // my max
+					edges[0] = local.front();
+					edges[1] = local.back();
 				} else {
 					edges[0] =  std::numeric_limits<float>::infinity();
 					edges[1] = -std::numeric_limits<float>::infinity();
@@ -237,7 +237,7 @@ int main(int argc, char** argv){
 		io_avg = io_sum / size;
 		comm_avg = comm_sum / size;
 		comp_avg = comp_sum / size;
-		cerr << "================= Performance Report =================\n";
+		cerr << "==================== Performance ====================\n";
 		cerr << "Number of processes : " << size << "\n";
 		cerr << "Number of elements : " << N << "\n";
 		cerr << "Number of iterations : " << iter_cnt << "\n";
